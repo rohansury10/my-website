@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Clone - Hindi Songs Playlist</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #08b4e9;
+    }
+
+    .playlist {
+      list-style: none;
+      padding: 0;
+    }
+
+    .playlist li {
+      padding: 10px;
+      margin: 5px;
+      background-color: #fbff00;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .playlist li:hover {
+      background-color: #d778c3;
+    }
+
+    audio {
+      margin-top: 20px;
+      width: 100%;
+      max-width: 500px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hindi Songs Playlist</h1>
+
+  <!-- Song List -->
+  <ul class="playlist">
+    <li onclick="playSong('audio1.mp3', 'Song Title 1')">Song Title 1</li>
+    <li onclick="playSong('audio2.mp3', 'Song Title 2')">Song Title 2</li>
+    <li onclick="playSong('songs/song3.mp3', 'Song Title 3')">Song Title 3</li>
+    <!-- Add more songs as needed -->
+  </ul>
+
+  <!-- Audio Player -->
+  <div>
+    <h2 id="current-song-title">Select a Song</h2>
+    <audio id="audio-player" controls>
+      <source src="" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <script>
+    // Function to play selected song
+    function playSong(songFile, songTitle) {
+      var audioPlayer = document.getElementById('audio-player');
+      var songTitleElement = document.getElementById('current-song-title');
+      songTitleElement.textContent = songTitle;
+      audioPlayer.src = songFile;
+      audioPlayer.play();
+    }
+  </script>
+</body>
+</html>

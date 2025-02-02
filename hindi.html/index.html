@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>www.listner.com</title>
+    <style>
+        body {
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center top;
+        }
+
+        .playlist {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 2px solid white;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .playing {
+            border-color: yellow;
+            box-shadow: 0px 0px 15px yellow;
+            transform: scale(1.05);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: rgb(0, 238, 255);
+            color: white;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: rgb(15, 196, 227);
+        }
+    </style>
+</head>
+<body>
+
+  <body background="background.jpg" height="100px" width="100px"></body>
+   
+    <h1>my.song</h1>
+
+    <!-- Playlist -->
+    <div class="playlist">
+      <h2>TUMSE HUA HAI PYAAR</h2>
+      <style>
+        .small-img{
+          width: 15px;
+          height:auto;/*keeps aspect ratio*/
+        }
+      </style>
+      <img src="image.jpg" alt=""width="70" height="100">
+      <audio id="audio2" controls>
+        <source src="audio5.mp3" type="audio/mpeg">
+      
+        Your browser does not support the audio element.
+      </audio>
+      <script>
+        const audio = document.getElementById('audio3');
+      
+        // Set volume (0.0 to 1.0)
+        audio.volume = 0.76; // Volume should be between 0.0 and 1.0
+      </script>
+    </div>
+
+    <!-- Playlist -->
+    <div class="playlist">
+      <h3>CHAND SIFARISH</h3>
+      <img src="image2.jpg" alt=""width="70" height="100">
+      <audio id="audio3" controls>
+        <source src="audio2.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <script>
+        const audio = document.getElementById('audio2');
+      
+        // Set volume (0.0 to 1.0)
+        audio.volume = 0.76; // Volume should be between 0.0 and 1.0
+      </script>
+      
+  </div>
+
+
+
+
+<!-- playlist -->
+     <div class="playlist">
+      <h3>TERE BIN</h3>
+      <img src="image3.jpg" alt=""width="70" height="100">
+      <audio id="audio1" controls>
+        <source src="audio1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <script>
+        const audio = document.getElementById('myAudio');
+        const audio = document.getElementById('audio1');
+        // Set volume (0.0 to 1.0)
+        audio.volume = 0.76; // Volume should be between 0.0 and 1.0
+      </script>
+     
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <!-- Buttons -->
+  <div class="buttons">
+    
+    <button onclick="nextAudio()">Play</button>
+    <button onclick="pauseAudio()">Pause</button>
+    <button onclick="stopAudio()">Stop</button>
+  </div>
+
+  <script>
+    const audioElements = document.querySelectorAll('audio');
+
+    function playAudio() {
+      audioElements.forEach(audio => audio.play());
+    }
+
+    function pauseAudio() {
+      audioElements.forEach(audio => audio.pause());
+    }
+
+    function stopAudio() {
+      audioElements.forEach(audio => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
+<script>
+  const audioElements = document.querySelectorAll('audio');
+
+  audioElements.forEach(audio => {
+    audio.addEventListener('play', () => {
+      audioElements.forEach(otherAudio => {
+        if (otherAudio !== audio) {
+          otherAudio.pause();
+        }
+      });
+    });
+  });
+
+  function pauseAudio() {
+    audioElements.forEach(audio => audio.pause());
+  }
+
+  function stopAudio() {
+    audioElements.forEach(audio => {
+      audio.pause();
+      audio.currentTime = 0;
+    });
+  }
+</script>
+
+<script>
+  let currentAudioIndex = 0;
+
+  function nextAudio() {
+    audioElements[currentAudioIndex].pause();
+    audioElements[currentAudioIndex].currentTime = 0;
+    currentAudioIndex = (currentAudioIndex + 1) % audioElements.length;
+    audioElements[currentAudioIndex].play();
+  }
+
+  audioElements.forEach((audio, index) => {
+    audio.addEventListener('ended', () => {
+      currentAudioIndex = (index + 1) % audioElements.length;
+      audioElements[currentAudioIndex].play();
+    });
+  });
+</script>
+<style>
+  body {
+    
+    background-image: url('background.jpg'); /* Add your image path here */
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position:center top;
+  }
+</style>
+
+<picture>
+  <source srcset="small.jpg" media="(max-width: 100px)">
+  <source srcset="medium.jpg" media="(max-width: 100px)">
+</picture>
+
